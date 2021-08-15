@@ -17,5 +17,6 @@ class Role extends Model
         self::NAME,
         self::SCOPE
     ];
+
 }
 

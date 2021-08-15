@@ -12,7 +12,7 @@ class ScopeMaker extends Command
      *
      * @var string
      */
-    protected $signature = 'make: scope {scope}';
+    protected $signature = 'make:scope {scope}';
 
     /**
      * The console command description.
@@ -33,7 +33,7 @@ class ScopeMaker extends Command
 
     public function handle()
     {
-//        $this->saveScopes();
+        $this->saveScopes();
         $role= Role::findOrFail(1);
 
         $scopes= json_decode($role->scope);
@@ -42,6 +42,26 @@ class ScopeMaker extends Command
         $role->update([
            Role::SCOPE =>json_encode(array_unique($scopes))
         ]);
-         echo ("Your scope added successfully!");
+         echo "Your scope added successfully!\n";
+    }
+
+    public function  saveScopes():void
+    {
+        if(!file_exists("role"))
+            file_put_contents("role","");
+
+        $roles = file_get_contents("role");
+        $roles= explode("\n",$roles);
+        array_push($roles,$this->argument("scope"));
+
+        $roles = array_filter((array)array_unique($roles));
+
+
+        $file = fopen("role","w");
+        fwrite($file,implode("\n",$roles));
+        fclose($file);
+
+
+
     }
 }

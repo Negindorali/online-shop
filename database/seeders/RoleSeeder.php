@@ -15,7 +15,7 @@ class RoleSeeder extends Seeder
     public function run()
     {
         $roles= json_encode(array_filter(explode("\n",file_get_contents("role"))));
-        DB::table('Roles')->insert([
+        DB::table('roles')->insert([
            [
                'name'=>"admin",
                'scope'=>$roles
