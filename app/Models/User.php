@@ -40,4 +40,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function may($scope){
+        $scopes = json_decode($this->role->scope);
+        if (in_array($scope, $scopes))
+            return true;
+        return false;
+    }
+    public function role(): BelongsTo{
+        return $this->belongsTo(Role::class);
+    }
 }
