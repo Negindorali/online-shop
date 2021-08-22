@@ -23,10 +23,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(["prefix"=>"panel","middleware"=>"auth"],function (){
-   Route::resource("role", RoleController::class);
-});
-
 Route::group(["prefix"=>"dashboard","middleware"=>"auth"],function (){
+    Route::resource("role", RoleController::class);
     Route::resource("food" , FoodController::class);
 });

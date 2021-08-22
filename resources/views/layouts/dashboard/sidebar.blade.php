@@ -490,7 +490,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">داشبورد</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">فروش و مدیریت مشتری</li>
+                    <li class="breadcrumb-item active" aria-current="page">منوی غذا</li>
                 </ol>
             </nav>
             <!-- end::breadcrumb -->
