@@ -26,9 +26,7 @@
                     </div>
                 @endif
                 <div class="col-sm-12 p-4 p-md-5 d-flex align-items-center justify-content-center bg-primary">
-
-
-                    <form action="{{route("blog.store")}}" class="appointment-form" method="post">
+                    <form action="{{route("blog.store")}}" class="appointment-form" method="post" enctype="multipart/form-data">
                         @csrf
                         <h3 class="mb-3">WRITE YOUR ARTICLE!</h3>
                         <div class="row justify-content-center">
@@ -69,7 +67,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <input class="btn btn-default py-3 px-4" id="formFileLg" type="file"/>
+                                <input class="btn btn-default py-3 px-4" id="formFileLg" name="{{\App\Models\Blog::IMAGE}}" type="file"/>
                             </div>
                         </div>
                     </form>
@@ -77,7 +75,6 @@
             </div>
         </div>
     </section>
-
     <section class="ftco-section">
         <div class="container">
             <div class="row d-flex">

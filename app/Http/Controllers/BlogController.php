@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Helper\UploadFile;
 use App\Models\Blog;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
@@ -11,17 +16,23 @@ class BlogController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
-        return view("blogs.index");
+        $blogs = Blog::with("user")->get();
+        return view("blogs.index",compact("blogs"));
+    }
+
+    public function showSinglePage (Blog $blog)
+    {
+        return view("blogs.singlepage",compact("blog"));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -29,10 +40,8 @@ class BlogController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Application|RedirectResponse|Redirector
      */
     public function store(Request $request)
     {
@@ -44,6 +53,11 @@ class BlogController extends Controller
             Blog::IMAGE => ["nullable", "max:2024", "image"]
         ]);
 
+        if ($request->has(Blog::IMAGE))
+            $valid =array_merge($valid,[
+               Blog::IMAGE=>(new UploadFile($request->file(Blog::IMAGE)))->fileName,
+            ]);
+
         $valid = array_merge($valid,[Blog::USER_ID => Auth::id()]);
 
         $blog = Blog::create($valid);
@@ -53,45 +67,57 @@ class BlogController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Blog  $blog
-     * @return \Illuminate\Http\Response
+     * @param Blog $blog
+     * @return Response
      */
     public function show(Blog $blog)
     {
-        //
+        abort("404");
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Blog  $blog
-     * @return \Illuminate\Http\Response
+     * @param Blog $blog
+     * @return Response
      */
     public function edit(Blog $blog)
     {
-        //
+        return view("blogs.edit",compact("blog"));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Blog  $blog
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Blog $blog
+     * @return Response
      */
     public function update(Request $request, Blog $blog)
     {
-        //
+        $valid = $request ->validate([
+            Blog::TITLE =>["required"],
+            Blog::TYPE =>["required"],
+            Blog::CONTENT =>["required"],
+            Blog::IMAGE => ["required"],
+            Blog::SLUG => ["required"]
+        ]);
+
+        $blog ->update($valid);
+
+        return redirect(route("blog.index"))->with("msg", "updated successfully");
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Blog  $blog
-     * @return \Illuminate\Http\Response
+     * @param Blog $blog
+     * @return Response
      */
     public function destroy(Blog $blog)
     {
-        //
+        $blog->delete();
+        return redirect(route("blog.index"))->with("msg", "deleted successfully");
+
     }
 }

@@ -12,115 +12,38 @@
         </div>
     </section>
 
-
     <section class="ftco-section bg-light">
         <div>
             <a href="{{route("blog.create")}}" class="float-left read btn btn-primary">create one</a>
         </div>
         <div class="container">
             <div class="row">
+                @foreach($blogs as $blog)
                 <div class="col-md-4 ftco-animate">
                     <div class="blog-entry">
-                        <a href="blog-single.html" class="block-20" style="background-image: url('{{asset('templateassets/images/image_1.jpg')}}');">
+                        <a href="{{route('singlepage',$blog->title)}}" class="block-20" style="background-image: url('{{$blog->image}}');">
+                            <img src="{{asset("upload/".$blog->image)}}" class="img img-fluid" alt="">
                         </a>
                         <div class="text px-4 pt-3 pb-4">
                             <div class="meta">
                                 <div><a href="#">August 3, 2020</a></div>
-                                <div><a href="#">Admin</a></div>
+                                <div><a href=""></a>{{$blog->user->name}}</div>
                             </div>
-                            <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+                            <h3 class="heading"><a href="">{{$blog->title}}</a></h3>
                             <p class="clearfix">
                                 <a href="#" class="float-left read btn btn-primary">Read more</a>
                                 <a href="#" class="float-right meta-chat"><span class="fa fa-comment"></span> 3</a>
+                                <a href="{{route("blog.edit",$blog->id)}}" class="float-right meta-chat" method=""><span class="fa fa-edit"></span></a>
+                            <form action="{{route("blog.destroy",$blog->id)}}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button class="float-right meta-chat btn"><span class="fa fa-remove"></span></button>
+                            </form>
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 ftco-animate">
-                    <div class="blog-entry">
-                        <a href="blog-single.html" class="block-20" style="background-image: url('{{asset('templateassets/images/image_2.jpg')}}');">
-                        </a>
-                        <div class="text px-4 pt-3 pb-4">
-                            <div class="meta">
-                                <div><a href="#">August 3, 2020</a></div>
-                                <div><a href="#">Admin</a></div>
-                            </div>
-                            <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                            <p class="clearfix">
-                                <a href="#" class="float-left read btn btn-primary">Read more</a>
-                                <a href="#" class="float-right meta-chat"><span class="fa fa-comment"></span> 3</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 ftco-animate">
-                    <div class="blog-entry">
-                        <a href="blog-single.html" class="block-20" style="background-image: url('{{asset('templateassets/images/image_3.jpg')}}');">
-                        </a>
-                        <div class="text px-4 pt-3 pb-4">
-                            <div class="meta">
-                                <div><a href="#">August 3, 2020</a></div>
-                                <div><a href="#">Admin</a></div>
-                            </div>
-                            <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                            <p class="clearfix">
-                                <a href="#" class="float-left read btn btn-primary">Read more</a>
-                                <a href="#" class="float-right meta-chat"><span class="fa fa-comment"></span> 3</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 ftco-animate">
-                    <div class="blog-entry">
-                        <a href="blog-single.html" class="block-20" style="background-image: url('{{asset('templateassets/images/image_4.jpg')}}');">
-                        </a>
-                        <div class="text px-4 pt-3 pb-4">
-                            <div class="meta">
-                                <div><a href="#">August 3, 2020</a></div>
-                                <div><a href="#">Admin</a></div>
-                            </div>
-                            <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                            <p class="clearfix">
-                                <a href="#" class="float-left read btn btn-primary">Read more</a>
-                                <a href="#" class="float-right meta-chat"><span class="fa fa-comment"></span> 3</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 ftco-animate">
-                    <div class="blog-entry">
-                        <a href="blog-single.html" class="block-20" style="background-image: url('{{asset('templateassets/images/image_5.jpg')}}');">
-                        </a>
-                        <div class="text px-4 pt-3 pb-4">
-                            <div class="meta">
-                                <div><a href="#">August 3, 2020</a></div>
-                                <div><a href="#">Admin</a></div>
-                            </div>
-                            <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                            <p class="clearfix">
-                                <a href="#" class="float-left read btn btn-primary">Read more</a>
-                                <a href="#" class="float-right meta-chat"><span class="fa fa-comment"></span> 3</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 ftco-animate">
-                    <div class="blog-entry">
-                        <a href="blog-single.html" class="block-20" style="background-image: url('{{asset('templateassets/images/image_6.jpg')}}');">
-                        </a>
-                        <div class="text px-4 pt-3 pb-4">
-                            <div class="meta">
-                                <div><a href="#">August 3, 2020</a></div>
-                                <div><a href="#">Admin</a></div>
-                            </div>
-                            <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                            <p class="clearfix">
-                                <a href="#" class="float-left read btn btn-primary">Read more</a>
-                                <a href="#" class="float-right meta-chat"><span class="fa fa-comment"></span> 3</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="row no-gutters my-5">
                 <div class="col text-center">

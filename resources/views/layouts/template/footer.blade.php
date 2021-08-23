@@ -101,7 +101,11 @@
         if (msg!== ""){
             setTimeout(function () {
 
-                swal("success", "{{session()->get("msg")}}","success");
+                Swal.fire(
+                    'Good job!',
+                    'You clicked the button!',
+                    'success'
+                )
             }, 250);
 
         }
@@ -109,7 +113,13 @@
         if (erorr!== ""){
             setTimeout(function () {
 
-                swal("failed", "validation failed!","error");
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your work has been erorr',
+                    showConfirmButton: false,
+                    timer: 2500
+                })
             }, 250);
 
         }

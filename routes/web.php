@@ -31,3 +31,5 @@ Route::group(["prefix"=>"dashboard","middleware"=>"auth"],function (){
 
 
 });
+
+Route::get("blog/{blog:title}",[BlogController::class,'showSinglePage'])->name('singlepage');

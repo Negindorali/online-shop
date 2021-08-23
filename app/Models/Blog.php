@@ -8,35 +8,33 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Blog extends Model
 {
-    use HasFactory,SoftDeletes;
-        const
-        USER_ID="user_id",
-        TITLE="title",
-        CONTENT ="content",
+    use HasFactory, SoftDeletes;
+
+    const
+        USER_ID = "user_id",
+        TITLE = "title",
+        CONTENT = "content",
         SLUG = "slug",
-        IMAGE ="image",
+        IMAGE = "image",
         TYPE = "type";
 
 
-        const POST_TYPE =[
-            "blog"=>"پست بلند",
-            "twitt" => "پست کوتاه"
-        ];
+    const POST_TYPE = [
+        "blog" => "پست بلند",
+        "twitt" => "پست کوتاه"
+    ];
 
-        protected $fillable =[
-          self::USER_ID,
-            self::TITLE,
-            self::CONTENT,
-            self::SLUG,
-            self::TYPE
-        ];
+    protected $fillable = [
+        self::USER_ID,
+        self::TITLE,
+        self::CONTENT,
+        self::SLUG,
+        self::TYPE,
+        self::IMAGE
+    ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
-        
-        }
-
-
-
+    }
 }
