@@ -32,8 +32,8 @@
                     <p>
                         <img src="{{asset("upload/".$blog->image)}}" alt="" class="img-fluid">
                     </p>
-                    <p>{{$blog->content}}</p>
 
+                    <p>{{$blog->content}}</p>
                     <div class="tag-widget post-tag-container mb-5 mt-5">
                         <div class="tagcloud">
                             <a href="#" class="tag-cloud-link">Food</a>
