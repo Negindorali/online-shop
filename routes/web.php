@@ -4,6 +4,7 @@ use App\Http\Controllers\Panel\RoleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,8 +29,7 @@ Route::group(["prefix"=>"dashboard","middleware"=>"auth"],function (){
     Route::resource("role", RoleController::class);
     Route::resource("food" , FoodController::class);
     Route::resource("blog" , BlogController::class);
-
-
+    Route::resource("comment",CommentController::class);
 });
 
 Route::get("blog/{blog:title}",[BlogController::class,'showSinglePage'])->name('singlepage');

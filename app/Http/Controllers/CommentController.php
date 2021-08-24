@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Comment;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -14,7 +17,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        return view("blogs.singlepage");
     }
 
     /**
@@ -24,7 +27,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+        return view("blogs.singlepage");
     }
 
     /**
@@ -35,7 +38,15 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $valid = $request->validate([
+           Comment::USER_NAME => ['required'],
+            Comment::BLOG_ID => ['required'],
+            Comment::CONTENT => ['required']
+        ]);
+        $valid = array_merge($valid,[Blog::USER_ID => Auth::id()]);
+        $comment = Comment::create($valid);
+        return back();
     }
 
     /**
@@ -46,7 +57,7 @@ class CommentController extends Controller
      */
     public function show(Comment $comment)
     {
-        //
+        abort("404");
     }
 
     /**
@@ -57,7 +68,7 @@ class CommentController extends Controller
      */
     public function edit(Comment $comment)
     {
-        //
+        abort("404");
     }
 
     /**
@@ -69,7 +80,7 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-        //
+        abort("404");
     }
 
     /**
@@ -80,6 +91,7 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
+        return back();
     }
 }

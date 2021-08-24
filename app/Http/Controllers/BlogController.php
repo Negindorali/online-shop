@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Helper\UploadFile;
 use App\Models\Blog;
+use App\Models\Comment;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -26,7 +27,9 @@ class BlogController extends Controller
 
     public function showSinglePage (Blog $blog)
     {
-        return view("blogs.singlepage",compact("blog"));
+        $comments = Comment::all();
+
+        return view("blogs.singlepage",compact("blog","comments"));
     }
 
     /**
