@@ -2,7 +2,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{env("APP_NAME")}} - @yield("ex-title")</title>
+    <title>@yield("ex-title")</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{asset("adminassets/media/image/favicon.png")}}">

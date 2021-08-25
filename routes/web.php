@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Panel\RoleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FoodController;
@@ -30,6 +31,9 @@ Route::group(["prefix"=>"dashboard","middleware"=>"auth"],function (){
     Route::resource("food" , FoodController::class);
     Route::resource("blog" , BlogController::class);
     Route::resource("comment",CommentController::class);
+    Route::resource("category", CategoryController::class);
 });
 
 Route::get("blog/{blog:title}",[BlogController::class,'showSinglePage'])->name('singlepage');
+
+
