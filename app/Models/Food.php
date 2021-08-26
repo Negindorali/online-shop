@@ -13,12 +13,15 @@ class Food extends Model
     const
           TYPE="type",
           Name="name",
-          PRICE="price";
+          PRICE="price",
+          CATEGORY_ID ="category_id";
 
     protected $fillable = [
         self::TYPE,
         self::PRICE,
-        self::Name
+        self::Name,
+        self::CATEGORY_ID,
+
     ];
     protected $table="foods";
 

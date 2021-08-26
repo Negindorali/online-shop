@@ -288,7 +288,7 @@
                 <a href="#" class="d-flex">
                     <div>
                         <figure class="avatar avatar-state-warning avatar-xs mr-3">
-                            <img src="assets/media/image/avatar.jpg" class="rounded-circle" alt="image">
+                            <img src="assets/media/image/avatar.lpeg" class="rounded-circle" alt="image">
                         </figure>
                     </div>
                     <div class="flex-grow-1">
@@ -466,7 +466,6 @@
     </div>
 </div>
 
-
 <div class="header">
 
     <!-- begin::header logo -->
@@ -481,11 +480,8 @@
 
     <!-- begin::header body -->
     <div class="header-body">
-
         <div class="header-body-left">
-
             <h3 class="page-title">{{env("APP_NAME")}} - @yield("ex-title")</h3>
-
             <!-- begin::breadcrumb -->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -494,7 +490,6 @@
                 </ol>
             </nav>
             <!-- end::breadcrumb -->
-
         </div>
 
         <div class="header-body-right">
@@ -726,7 +721,7 @@
                     <a href="#" class="nav-link bg-none" data-sidebar-open="#userProfile">
                         <div>
                             <figure class="avatar avatar-state-success avatar-sm">
-                                <img src="assets/media/image/avatar.jpg" class="rounded-circle" alt="image">
+                                <img src="assets/media/image/avatar.jpeg" class="rounded-circle" alt="image">
                             </figure>
                         </div>
                     </a>

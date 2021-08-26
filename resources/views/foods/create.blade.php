@@ -27,11 +27,11 @@
                 <input type="number" name="{{\App\Models\Food::PRICE}}" id="{{\App\Models\Food::PRICE}}" required class="form-control" placeholder="FOOD PRICE">
             </div>
             <div class="form-group col-md">
-                <label for="{{\App\Models\Food::TYPE}}">FOOD TYPE</label>
-                <select class="form-control" name="{{\App\Models\Food::TYPE}}" id="{{\App\Models\Food::TYPE}}"  placeholder="FOOD TYPE">
-                    <option>FOOD</option>
-                    <option>DRINKS</option>
-                    <option>WINE</option>
+                <label for="{{\App\Models\Food::CATEGORY_ID}}">FOOD TYPE</label>
+                <select class="form-control" name="{{\App\Models\Food::CATEGORY_ID}}" id="{{\App\Models\Food::CATEGORY_ID}}"  placeholder="FOOD TYPE">
+                    @foreach($category as $title)
+                    <option value="{{$title->id}}">{{$title->title}}</option>
+                    @endforeach
                 </select>
             </div>
         </div>

@@ -16,7 +16,7 @@ class Food extends Migration
         Schema::create("foods",function (Blueprint $table){
            $table->id();
            $table->string('name');
-           $table->string('type');
+           $table->string('type')->nullable();
            $table->double('price');
            $table->softDeletes();
            $table->timestamps();

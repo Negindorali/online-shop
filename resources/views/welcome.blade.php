@@ -156,7 +156,7 @@
                                     <span class="price">$29</span>
                                 </div>
                             </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
+                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomato</span></p>
                         </div>
                     </div>
                     <div class="menus d-flex ftco-animate">

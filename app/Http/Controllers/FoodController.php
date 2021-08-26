@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Food;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -16,8 +17,9 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $foods= Food::all();
-        return view("foods.index",compact("foods"));
+
+        $foods= Food::with('category')->get();
+        return view("foods.showfoods",compact("foods"));
     }
 
     /**
@@ -25,7 +27,8 @@ class FoodController extends Controller
      */
     public function create()
     {
-        return view("foods.create");
+        $category = Category::all();
+        return view("foods.create",compact("category"));
     }
 
     /**
@@ -39,7 +42,8 @@ class FoodController extends Controller
         $valid = $request->validate([
            Food::Name=>["required",'unique:foods'],
            Food::PRICE=>["required"],
-            Food::TYPE=>["required"],
+            Food::TYPE=>["nullable"],
+            Food::CATEGORY_ID=>['required']
         ]);
 
         Food::create($valid);
@@ -65,7 +69,8 @@ class FoodController extends Controller
      */
     public function edit(Food $food)
     {
-        return view("foods.edit",compact("food"));
+        $category=Category::all();
+        return view("foods.edit",compact("food","category"));
     }
 
     /**
