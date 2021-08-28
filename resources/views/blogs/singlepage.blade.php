@@ -43,29 +43,28 @@
                         </div>
                     </div>
 
-                    <div class="about-author d-flex p-4 bg-light">
-                        <div class="bio mr-5">
-                            <img src="{{asset('templateassets/images/person_1.jpg')}}" alt="Image placeholder" class="img-fluid mb-4">
-                        </div>
-                        <div class="desc">
-                            <h3>George Washington</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
-                        </div>
-                    </div>
+{{--                    <div class="about-author d-flex p-4 bg-light">--}}
+{{--                        <div class="bio mr-5">--}}
+{{--                            <img src="{{asset('templateassets/images/person_1.jpg')}}" alt="Image placeholder" class="img-fluid mb-4">--}}
+{{--                        </div>--}}
+{{--                        <div class="desc">--}}
+{{--                            <h3>George Washington</h3>--}}
+{{--                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                     <div class="pt-5 mt-5">
 
-                        <h3 class="mb-5 h4 font-weight-bold p-4 bg-light">07 Feedbacks</h3>
+                        <h3 class="mb-5 h4 font-weight-bold p-4 bg-light">{{count($blog->comments)}} Feedbacks</h3>
                         <ul class="comment-list">
-
                             <li class="comment">
-                                <div class="vcard bio">
-                                    <img src="{{asset('templateassets/images/person_1.jpg')}}" alt="Image placeholder">
-                                </div>
-                                @foreach($comments as $comment)
+{{--                                <div class="vcard bio">--}}
+{{--                                    <img src="{{asset('templateassets/images/person_1.jpg')}}" alt="Image placeholder">--}}
+{{--                                </div>--}}
+                                @foreach($blog->comments as $comment)
                                 <div class="comment-body">
-{{--                                    <h3>{{->user()->name}}</h3>--}}
-                                    <div class="meta mb-2">{{$comment->created_at}}</div>
+                                    <h3>{{$comment->user->name}}</h3>
+                                    <div class="meta mb-2">{{\Carbon\Carbon::make($comment->created_at)->diffForHumans()}}</div>
                                     <p>{{$comment->content}}</p>
                                     <p><a href="#" class="reply">Reply</a></p>
                                     <form action="{{route("comment.destroy",$comment->id)}}" method="post">
@@ -119,10 +118,6 @@
 {{--                                                            <img src="{{asset('templateassets/images/person_1.jpg')}}" alt="Image placeholder">--}}
 {{--                                                        </div>--}}
 {{--                                                        <div class="comment-body">--}}
-{{--                                                            <h3>John Doe</h3>--}}
-{{--                                                            <div class="meta mb-2">August 3, 2020 at 2:21pm</div>--}}
-{{--                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>--}}
-{{--                                                            <p><a href="#" class="reply">Reply</a></p>--}}
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -131,23 +126,20 @@
                                     </li>
                                 </ul>
                             </li>
-
-                            <li class="comment">
-                                <div class="vcard bio">
-                                    <img src="{{asset('templateassets/images/person_1.jpg')}}" alt="Image placeholder">
-                                </div>
-                                <div class="comment-body">
-                                    <h3>John Doe</h3>
-                                    <div class="meta mb-2">August 3, 2020 at 2:21pm</div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                                    <p><a href="#" class="reply">Reply</a></p>
-                                </div>
-                            </li>
+{{--                            <li class="comment">--}}
+{{--                                <div class="vcard bio">--}}
+{{--                                    <img src="{{asset('templateassets/images/person_1.jpg')}}" alt="Image placeholder">--}}
+{{--                                </div>--}}
+{{--                                <div class="comment-body">--}}
+{{--                                    <h3>John Doe</h3>--}}
+{{--                                    <div class="meta mb-2">August 3, 2020 at 2:21pm</div>--}}
+{{--                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>--}}
+{{--                                    <p><a href="#" class="reply">Reply</a></p>--}}
+{{--                                </div>--}}
+{{--                            </li>--}}
                         </ul>
                         <!-- END comment-list -->
-
                         <div class="comment-form-wrap pt-5">
-
                             <h3 class="mb-5 h4 font-weight-bold p-4 bg-light">Leave a comment</h3>
                             <form action="{{route("comment.store")}}" class="p-4 p-md-5 bg-light" method="post">
                                 @csrf
@@ -168,7 +160,6 @@
                         </div>
                     </div>
                 </div> <!-- .col-md-8 -->
-
                 <div class="col-lg-4 sidebar ftco-animate">
                     <div class="sidebar-box">
                         <form action="#" class="search-form">
@@ -189,7 +180,6 @@
                             <li><a href="#">Wine <span>(2)</span></a></li>
                         </ul>
                     </div>
-
                     <div class="sidebar-box ftco-animate">
                         <h3>Popular Articles</h3>
                         <div class="block-21 mb-4 d-flex">
@@ -226,7 +216,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="sidebar-box ftco-animate">
                         <h3>Tag Cloud</h3>
                         <ul class="tagcloud m-0 p-0">
@@ -239,7 +228,6 @@
                             <a href="#" class="tag-cloud-link">Sweets</a>
                         </ul>
                     </div>
-
                     <div class="sidebar-box ftco-animate">
                         <h3>Archives</h3>
                         <ul class="categories">
@@ -250,8 +238,6 @@
                             <li><a href="#">May 2020 <span>(8)</span></a></li>
                         </ul>
                     </div>
-
-
                     <div class="sidebar-box ftco-animate">
                         <h3>Paragraph</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
@@ -260,6 +246,4 @@
             </div>
         </div>
     </section>
-
-
 @endsection

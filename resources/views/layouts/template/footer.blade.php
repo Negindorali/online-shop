@@ -125,3 +125,7 @@
         }
     })
 </script>
+
+<script>
+    console.log({!! json_encode(\Illuminate\Support\Facades\DB::getQueryLog()) !!})
+</script>

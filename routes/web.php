@@ -35,5 +35,6 @@ Route::group(["prefix"=>"dashboard","middleware"=>"auth"],function (){
 });
 
 Route::get("blog/{blog:title}",[BlogController::class,'showSinglePage'])->name('singlepage');
+Route::get('food/menu',[FoodController::class,"ShowMenu"])->name('foodmenu');
 
 

@@ -41,9 +41,9 @@
                 @endif
                 <li class="nav-item"><a href="menu.html" class="nav-link">about</a></li>
                 <li class="nav-item"><a href="menu.html" class="nav-link">chef</a></li>
-                <li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
+                <li class="nav-item"><a href="{{url('/food/menu')}}" class="nav-link">Menu</a></li>
                 <li class="nav-item"><a href="reservation.html" class="nav-link">Reservation</a></li>
-                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="{{url('/dashboard/blog')}}" class="nav-link">Blog</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
         </div>

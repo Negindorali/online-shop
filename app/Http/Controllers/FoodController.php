@@ -22,6 +22,13 @@ class FoodController extends Controller
         return view("foods.showfoods",compact("foods"));
     }
 
+    public function ShowMenu(Food $food)
+    {
+//        $food = $food->load('category','category.food');
+        $food= Food::with('category')->get();
+        return view('blogs.menu',compact('food'));
+    }
+
     /**
      * @return Application|Factory|View
      */
