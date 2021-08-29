@@ -201,7 +201,10 @@
                 <a class="active" href="{{url('/dashboard/food')}}">Food Manager</a>
             </li>
             <li>
-                <a href="{{url('/dashboard/blog')}}">Blog Manager <span class="badge badge-warning">2</span></a>
+                <a href="{{url('/dashboard/blog')}}">Blog Manager</a>
+            </li>
+            <li>
+                <a href="{{url('/dashboard/tag')}}">TAG Manager</a>
             </li>
 {{--            <li>--}}
 {{--                <a href="dashboard-three.html">آمار وب سایت </a>--}}
