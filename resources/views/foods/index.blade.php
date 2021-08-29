@@ -23,6 +23,7 @@
                 <th scope="col">FOOD NAME</th>
                 <th scope="col">FOOD TYPE</th>
                 <th scope="col">FOOD PRICE</th>
+                <th scope="col">NUTRIENTS</th>
             </tr>
             </thead>
             <tbody>
@@ -32,6 +33,7 @@
                     <td>{{$food->name}}</td>
                     <td>{{$food->category_id}}</td>
                     <td>{{$food->price}}</td>
+                    <td>{{$food->nutrients}}</td>
 {{--                    <td><a href="{{route("food.edit",$food->id)}}"><i class="fa fa-edit fa-2x"></i></a></td>--}}
 {{--                    <td>--}}
 {{--                        <form action="{{route("category.destroy",$food->id)}}" method="post">--}}

@@ -23,7 +23,16 @@ class BlogController extends Controller
     {
         $blogs = Blog::with("user")->withCount('comments')->get();
         return view("blogs.index",compact("blogs"));
+    } public function showblogs()
+    {
+        $blogs = Blog::with("user")->withCount('comments')->get();
+        return view("blogs.showblogs",compact("blogs"));
     }
+//    public function Blog()
+//    {
+//        $blogs = Blog::with("user")->withCount('comments')->get();
+//        return view("blogs.showblogs",compact("blogs"));
+//    }
 
     public function showSinglePage (Blog $blog)
     {

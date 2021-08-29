@@ -196,66 +196,66 @@
     </div>
     <div class="navigation-menu-body">
         <ul id="navigationDashboards" class="navigation-active">
-            <li class="navigation-divider">داشبورد</li>
+            <li class="navigation-divider">Dashboard</li>
             <li>
-                <a class="active" href="index.html">فروش و مدیریت مشتری</a>
+                <a class="active" href="{{url('/dashboard/food')}}">Food Manager</a>
             </li>
             <li>
-                <a href="dashboard-two.html">پشتیبانی <span class="badge badge-warning">2</span></a>
+                <a href="{{url('/dashboard/blog')}}">Blog Manager <span class="badge badge-warning">2</span></a>
             </li>
-            <li>
-                <a href="dashboard-three.html">آمار وب سایت </a>
-            </li>
-            <li class="navigation-divider">سایر</li>
-            <li>
-                <a href="widgets.html">ویجت های بیشتر</a>
-            </li>
-            <li class="navigation-divider">خلاصه</li>
-            <li>
-                <a href="#" class="mb-2">
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <div class="icon-block bg-warning text-white mr-3">
-                                <i class="ti-bar-chart"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <h6 class="font-size-13 line-height-22 primary-font m-b-5">مجموع فروش</h6>
-                            <h4 class="m-b-0 primary-font font-weight-bold line-height-30">15,687</h4>
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="mb-2">
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <div class="icon-block bg-success text-white mr-3">
-                                <i class="ti-email"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <h6 class="font-size-13 line-height-22 primary-font m-b-5">مجموع تیکت ها</h6>
-                            <h4 class="m-b-0 primary-font font-weight-bold line-height-30">214</h4>
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <div class="icon-block bg-info text-white mr-3">
-                                <i class="ti-user"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <h6 class="font-size-13 line-height-22 primary-font m-b-5">بازدید کنندگان</h6>
-                            <h4 class="m-b-0 primary-font font-weight-bold line-height-30">30,313</h4>
-                        </div>
-                    </div>
-                </a>
-            </li>
+{{--            <li>--}}
+{{--                <a href="dashboard-three.html">آمار وب سایت </a>--}}
+{{--            </li>--}}
+{{--            <li class="navigation-divider">سایر</li>--}}
+{{--            <li>--}}
+{{--                <a href="widgets.html">ویجت های بیشتر</a>--}}
+{{--            </li>--}}
+{{--            <li class="navigation-divider">خلاصه</li>--}}
+{{--            <li>--}}
+{{--                <a href="#" class="mb-2">--}}
+{{--                    <div class="d-flex align-items-center">--}}
+{{--                        <div>--}}
+{{--                            <div class="icon-block bg-warning text-white mr-3">--}}
+{{--                                <i class="ti-bar-chart"></i>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div>--}}
+{{--                            <h6 class="font-size-13 line-height-22 primary-font m-b-5">مجموع فروش</h6>--}}
+{{--                            <h4 class="m-b-0 primary-font font-weight-bold line-height-30">15,687</h4>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </a>--}}
+{{--            </li>--}}
+{{--            <li>--}}
+{{--                <a href="#" class="mb-2">--}}
+{{--                    <div class="d-flex align-items-center">--}}
+{{--                        <div>--}}
+{{--                            <div class="icon-block bg-success text-white mr-3">--}}
+{{--                                <i class="ti-email"></i>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div>--}}
+{{--                            <h6 class="font-size-13 line-height-22 primary-font m-b-5">مجموع تیکت ها</h6>--}}
+{{--                            <h4 class="m-b-0 primary-font font-weight-bold line-height-30">214</h4>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </a>--}}
+{{--            </li>--}}
+{{--            <li>--}}
+{{--                <a href="#">--}}
+{{--                    <div class="d-flex align-items-center">--}}
+{{--                        <div>--}}
+{{--                            <div class="icon-block bg-info text-white mr-3">--}}
+{{--                                <i class="ti-user"></i>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div>--}}
+{{--                            <h6 class="font-size-13 line-height-22 primary-font m-b-5">بازدید کنندگان</h6>--}}
+{{--                            <h4 class="m-b-0 primary-font font-weight-bold line-height-30">30,313</h4>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </a>--}}
+{{--            </li>--}}
         </ul>
         <ul id="navigationApps">
             <li class="navigation-divider">اپ ها</li>

@@ -54,7 +54,6 @@
 {{--                    </div>--}}
 
                     <div class="pt-5 mt-5">
-
                         <h3 class="mb-5 h4 font-weight-bold p-4 bg-light">{{count($blog->comments)}} Feedbacks</h3>
                         <ul class="comment-list">
                             <li class="comment">

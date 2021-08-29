@@ -14,13 +14,17 @@ class Food extends Model
           TYPE="type",
           Name="name",
           PRICE="price",
-          CATEGORY_ID ="category_id";
+          CATEGORY_ID ="category_id",
+        NUTRIENTS ="nutrients",
+        IMAGE = "image";
 
     protected $fillable = [
         self::TYPE,
         self::PRICE,
         self::Name,
         self::CATEGORY_ID,
+        self::NUTRIENTS,
+        self::IMAGE,
 
     ];
     protected $table="foods";

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Helper\UploadFile;
 use App\Models\Category;
 use App\Models\Food;
 use Illuminate\Contracts\Foundation\Application;
@@ -26,7 +27,7 @@ class FoodController extends Controller
     {
 //        $food = $food->load('category','category.food');
         $food= Food::with('category')->get();
-        return view('blogs.menu',compact('food'));
+        return view('foods.menu',compact('food'));
     }
 
     /**
@@ -50,8 +51,16 @@ class FoodController extends Controller
            Food::Name=>["required",'unique:foods'],
            Food::PRICE=>["required"],
             Food::TYPE=>["nullable"],
-            Food::CATEGORY_ID=>['required']
+            Food::CATEGORY_ID=>['required'],
+            Food::NUTRIENTS => ['required'],
+            Food::IMAGE => ["nullable", "max:2024", "image"]
         ]);
+
+        if ($request->has(Food::IMAGE))
+            $valid =array_merge($valid,[
+                Food::IMAGE=>(new UploadFile($request->file(Food::IMAGE)))->fileName,
+            ]);
+
 
         Food::create($valid);
         return redirect(route("food.index"))->with("msg","saved!");
@@ -92,7 +101,9 @@ class FoodController extends Controller
         $valid = $request->validate([
            Food::TYPE =>["required"],
            Food::PRICE =>["required"],
-           Food::Name =>["required",'unique:foods,id,'.$food->id]
+           Food::Name =>["required",'unique:foods,id,'.$food->id],
+            Food::NUTRIENTS => ["required"],
+            Food::IMAGE => ["nullable"]
         ]);
 
         $food->update($valid);

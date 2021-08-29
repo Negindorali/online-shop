@@ -9,7 +9,13 @@
                 <label for="{{\App\Models\Food::Name}}">FOOD NAME </label>
                 <input type="text" name="{{\App\Models\Food::Name}}" id="{{\App\Models\Food::Name}}" required class="form-control" placeholder="FOOD NAME" value="{{old(\App\Models\Food::Name,$food->name)}}">
             </div>
-            <div class="col-md"></div>
+            <div class="col-md">
+                <div class="col-md">
+                    <label for="{{\App\Models\Food::NUTRIENTS}}}">NUTRIENTS</label>
+                    <input type="text" name="{{\App\Models\Food::NUTRIENTS}}" id="{{\App\Models\Food::NUTRIENTS}}" required class="form-control" placeholder="NUTRIENTS" value="{{old(Food::NUTRIENTS,$food->nutrients)
+                    }}" />
+                </div>
+            </div>
         </div>
 
         <div class="form-group row">
@@ -24,6 +30,9 @@
                     <option>DRINKS</option>
                     <option>WINE</option>
                 </select>
+            </div>
+            <div class="col-md-4">
+                <input class="btn btn-default py-3 px-4" id="formFileLg" name="{{old(\App\Models\Food::IMAGE)}}" type="file"/>
             </div>
         </div>
 
