@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\TagController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,7 @@ Route::group(["prefix"=>"dashboard","middleware"=>"auth"],function (){
     Route::resource("blog" , BlogController::class);
     Route::resource("comment",CommentController::class);
     Route::resource("category", CategoryController::class);
+    Route::resource("tag", TagController::class);
 });
 
 Route::get("blog/{blog:title}",[BlogController::class,'showSinglePage'])->name('singlepage');
