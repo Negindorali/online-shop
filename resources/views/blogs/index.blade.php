@@ -17,17 +17,17 @@
                 @foreach($blogs as $blog)
                     <tr>
                         <th scope="row">{{$blog->id}}</th>
-                        <td>{{$blog->name}}</td>
+                        <td>{{$blog->title}}</td>
                         <td>{{$blog->slug}}</td>
                         <td>{{$blog->type}}</td>
-                                            <td><a href="{{route("blog.edit",$blog->id)}}"><i class="fa fa-edit fa-2x"></i></a></td>
-                                            <td>
-                                                <form action="{{route("blog.destroy",$blog->id)}}" method="post">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button class="btn"><i class="fa fa-remove fa-2x"></i></button>
-                                                </form>
-                                            </td>
+                        <td><a href="{{route("blog.edit",$blog->id)}}"><i class="fa fa-edit fa-2x"></i></a></td>
+                        <td>
+                            <form action="{{route("blog.destroy",$blog->id)}}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button class="btn"><i class="fa fa-remove fa-2x"></i></button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

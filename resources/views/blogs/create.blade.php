@@ -57,6 +57,22 @@
                                 <input class="btn btn-default py-3 px-4" id="formFileLg" name="{{\App\Models\Blog::IMAGE}}" type="file"/>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <div class="col-md">
+                                <label for="tags">TAG</label>
+                                <div class="d-flex">
+                                    <select name="tag[]" id="tag" class="form-control" required multiple>
+                                        @foreach($tags as $tag)
+                                            <option value="{{$tag->id}}">{{$tag->title}}</option>
+                                        @endforeach
+                                    </select>
+                                    <button class="btn rounded"type="button">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md"></div>
+                        </div>
                     </form>
                 </div>
             </div>

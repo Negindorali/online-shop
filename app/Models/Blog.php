@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\BlogTagsController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -44,6 +45,12 @@ class Blog extends Model
     }
     public function tags()
     {
-        return $this->hasMany(Tag::class);
+        return $this->belongsToMany(Tag::class,"blog_tags");
+    }
+
+    public function categories()
+    {
+        return $this->belongsTo(Category::class);
+
     }
 }

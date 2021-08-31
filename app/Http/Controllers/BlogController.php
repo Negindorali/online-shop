@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Helper\UploadFile;
 use App\Models\Blog;
 use App\Models\Comment;
+use App\Models\Tag;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -21,7 +22,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::with("user")->withCount('comments')->get();
+//        return Blog::where("id",9)->with("tags")->get();
+        $blogs = Blog::with( "user")->withCount('comments')->get();
         return view("blogs.index",compact("blogs"));
     } public function showblogs()
     {
@@ -36,7 +38,7 @@ class BlogController extends Controller
 
     public function showSinglePage (Blog $blog)
     {
-        $blog= $blog->load('comments','comments.user');
+        $blog= $blog->load('comments','comments.user','tags','categories');
         return view("blogs.singlepage",compact("blog"));
     }
 
@@ -47,7 +49,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view("blogs.create");
+        $tags = Tag::all();
+        return view("blogs.create",compact("tags"));
     }
 
     /**
@@ -72,6 +75,15 @@ class BlogController extends Controller
         $valid = array_merge($valid,[Blog::USER_ID => Auth::id()]);
 
         $blog = Blog::create($valid);
+        $request->input("tag");
+        foreach ($request->input("tag" ) as $tag ){
+            $blog ->tags()->sync([
+                    [
+                        "tag_id"=> $tag
+                    ]
+                ],false
+            );
+        }
         return redirect(route("blog.index", $blog->id))->with("msg","saved!");
     }
 
