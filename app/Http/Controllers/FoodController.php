@@ -105,6 +105,12 @@ class FoodController extends Controller
             Food::NUTRIENTS => ["required"],
             Food::IMAGE => ["nullable"]
         ]);
+        if ($request->hasFile(Food::IMAGE))
+            @unlink("upload".$food->imageName);
+        if ($request->has(Food::IMAGE))
+            $valid =array_merge($valid,[
+                Food::IMAGE=>(new UploadFile($request->file(Food::IMAGE)))->fileName,
+            ]);
 
         $food->update($valid);
         return redirect(route("food.index"))->with("msg","updated !");

@@ -38,6 +38,11 @@
                             @endforeach
                         </div>
                     </div>
+                        <div class="col-md">
+                            <p>Did you like it?</p>
+                            <button class="btn like" href="" data-like="{{}}"><i class="fa fa-thumbs-o-up"></i><span class="ml-2 mr-3">5</span></button>
+                            <button class="btn" href=""><i class="fa fa-thumbs-o-down"></i><span class="ml-2 mr-3">5</span></button>
+                        </div>
                     <div class="pt-5 mt-5">
                         <h3 class="mb-5 h4 font-weight-bold p-4 bg-light">{{count($blog->comments)}} Feedbacks</h3>
                         <ul class="comment-list">
@@ -110,5 +115,22 @@
                 </div><!-- END COL -->
             </div>
         </div>
+
+        <script>
+            $(".like").click(myfuction(){
+                const item = $(this).data("like");
+                const formdata = new FormData();
+                formdata.append("user_id",item);
+                $.ajax({
+                    method:"post",
+                    url:"/dashboard/showblogs",
+                    data:formdata,
+                    processData:false,
+                    contentType:false
+                })
+            })
+        </script>
     </section>
+
+
 @endsection

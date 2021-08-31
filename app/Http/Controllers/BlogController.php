@@ -38,6 +38,7 @@ class BlogController extends Controller
 
     public function showSinglePage (Blog $blog)
     {
+
         $blog= $blog->load('comments','comments.user','tags','categories');
         return view("blogs.singlepage",compact("blog"));
     }
@@ -126,7 +127,17 @@ class BlogController extends Controller
             Blog::SLUG => ["required"]
         ]);
 
+        if ($request->hasFile(Blog::IMAGE))
+            @unlink("upload".$blog->imageName);
+        if ($request->has(Blog::IMAGE))
+            $valid =array_merge($valid,[
+                Blog::IMAGE=>(new UploadFile($request->file(Blog::IMAGE)))->fileName,
+            ]);
+
         $blog ->update($valid);
+
+
+
 
         return redirect(route("blog.index"))->with("msg", "updated successfully");
     }

@@ -53,4 +53,8 @@ class Blog extends Model
         return $this->belongsTo(Category::class);
 
     }
+    public function likeable()
+    {
+        return $this->morphMany(Like::class,"likeable");
+    }
 }
