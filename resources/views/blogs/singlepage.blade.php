@@ -12,7 +12,6 @@
             </div>
         </div>
     </section>
-
     <section class="ftco-section">
         <div class="container">
             <div class="row">
@@ -26,7 +25,6 @@
                             </ol>
                         </div>
                     @endif
-
                     <h2 class="mb-3">{{$blog->slug}}</h2>
                     <p>{{$blog->title}}</p>
                     <p>{{$blog->content}}</p>
@@ -39,9 +37,10 @@
                         </div>
                     </div>
                         <div class="col-md">
-                            <p>Did you like it?</p>
-                            <button class="btn like" href="" data-like="{{}}"><i class="fa fa-thumbs-o-up"></i><span class="ml-2 mr-3">5</span></button>
-                            <button class="btn" href=""><i class="fa fa-thumbs-o-down"></i><span class="ml-2 mr-3">5</span></button>
+                            <p>This blog has <button class="btn like" data-like ="{{$blog->id}}"><i class="fa fa-thumbs-o-up"></i><span class="ml-2 mr-3" id="likecount">{{count($blog->likeable)}}</span></button>
+                                users who likes it!
+                            </p>
+
                         </div>
                     <div class="pt-5 mt-5">
                         <h3 class="mb-5 h4 font-weight-bold p-4 bg-light">{{count($blog->comments)}} Feedbacks</h3>
@@ -50,7 +49,7 @@
                                 @foreach($blog->comments as $comment)
                                 <div class="comment-body">
                                     <h3>{{$comment->user->name}}</h3>
-                                    <div class="meta mb-2">{{\Carbon\Carbon::make($comment->created_at)->diffForHumans()}}</div>
+                                    <div class="meta mb-2" style="font-size: 0.75rem !important;">{{\Carbon\Carbon::make($comment->created_at)->diffForHumans()}}</div>
                                     <p>{{$comment->content}}</p>
                                     <p><a href="#" class="reply">Reply</a></p>
                                     <form action="{{route("comment.destroy",$comment->id)}}" method="post">
@@ -63,6 +62,7 @@
                             </li>
                         </ul>
                     </div>
+
                         <!-- END comment-list -->
                         <div class="comment-form-wrap pt-5">
                             <h3 class="mb-5 h4 font-weight-bold p-4 bg-light">Leave a comment</h3>
@@ -115,22 +115,27 @@
                 </div><!-- END COL -->
             </div>
         </div>
-
-        <script>
-            $(".like").click(myfuction(){
-                const item = $(this).data("like");
-                const formdata = new FormData();
-                formdata.append("user_id",item);
-                $.ajax({
-                    method:"post",
-                    url:"/dashboard/showblogs",
-                    data:formdata,
-                    processData:false,
-                    contentType:false
-                })
-            })
-        </script>
     </section>
+@endsection
 
-
+@section("ex-js")
+    <script>
+        $(".like").click(function(){
+            console.log($(this))
+            const item = $(this).data("like");
+            $.ajax({
+                method:"get",
+                url:`{{route('like.api')}}?post_id=${item}`,
+                processData:false,
+                contentType:false,
+                statusCode:{
+                    401:function (){
+                        swal("Error","You must be authenticate first!","error")
+                    }
+                }
+            }).done(function (data){
+               $('#likecount').text(data)
+            })
+        })
+    </script>
 @endsection

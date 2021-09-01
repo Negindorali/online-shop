@@ -29,7 +29,7 @@
                                 <p class="clearfix">
                                     <a href="{{route('singlepage',$blog->title)}}" class="float-left read btn btn-primary">Read more</a>
                                     <a href="#" class="float-right meta-chat"><span class="fa fa-comment"></span>{{$blog->comments_count}}</a>
-                                    <a href="#" class="float-right meta-chat"><span class="fa fa-heart-o"></span></a>
+                                    <a href="#" class="float-right meta-chat"><span class="fa fa-heart-o"></span>{{$blog->likeable_count}}</a>
                                 </p>
                             </div>
                         </div>

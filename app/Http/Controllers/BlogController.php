@@ -25,9 +25,12 @@ class BlogController extends Controller
 //        return Blog::where("id",9)->with("tags")->get();
         $blogs = Blog::with( "user")->withCount('comments')->get();
         return view("blogs.index",compact("blogs"));
-    } public function showblogs()
+
+    }
+
+    public function showblogs()
     {
-        $blogs = Blog::with("user")->withCount('comments')->get();
+        $blogs = Blog::with("user")->withCount('comments','likeable')->get();
         return view("blogs.showblogs",compact("blogs"));
     }
 //    public function Blog()
@@ -39,7 +42,7 @@ class BlogController extends Controller
     public function showSinglePage (Blog $blog)
     {
 
-        $blog= $blog->load('comments','comments.user','tags','categories');
+        $blog= $blog->load('comments','comments.user','tags','categories','likeable');
         return view("blogs.singlepage",compact("blog"));
     }
 

@@ -42,6 +42,8 @@
                                 </div>
                                 <p><span>{{$foood->nutrients}}</span></p>
                             </div>
+{{--                            <button class="btn like" data-like=""><i class="fa fa-thumbs-o-up"></i><span class="likecount"></span></button>--}}
+                            <button class="btn like" data-like ="{{$foood->id}}"><i class="fa fa-thumbs-o-up"></i><span class="ml-2 mr-3" class="likecount">{{count($foood->likeable)}}</span></button>
                         </div>
                        @endforeach
                         </div>
@@ -69,13 +71,13 @@
                                 </div>
                                 <p><span>{{$foood->nutrients}}</span></p>
                             </div>
+                            <button class="btn like" data-like="{{$foood->id}}"><i class="fa fa-thumbs-o-up"></i><span class="likecount">{{count($foood->likeable)}}</span></button>
                         </div>
                         @endforeach
                         <span class="flat flaticon-pizza" style="left: 0;"></span>
                         <span class="flat flaticon-chicken" style="right: 0;"></span>
                     </div>
                 </div>
-
                 <div class="col-md-6 col-lg-4">
                     <div class="menu-wrap">
                         <div class="heading-menu text-center ftco-animate">
@@ -95,13 +97,13 @@
                                 </div>
                                 <p><span>{{$foood->nutrients}}</span></p>
                             </div>
+                            <button class="btn like" data-like="{{$foood->id}}"><i class="fa fa-thumbs-o-up"></i><span class="likecount">{{count($foood->likeable)}}</span></button>
                         </div>
                         @endforeach
                         <span class="flat flaticon-omelette" style="left: 0;"></span>
                         <span class="flat flaticon-burger" style="right: 0;"></span>
                     </div>
                 </div>
-
                 <!--  -->
                 <div class="col-md-6 col-lg-4">
                     <div class="menu-wrap">
@@ -194,5 +196,29 @@
     </section>
 
 
+
+@endsection
+
+@section('ex-js')
+    <script>
+        $('.like').click(function (){
+            const element = $(this)
+
+            const item = $(this).data('like');
+            $.ajax({
+                method : "get",
+                url:`{{route('food.api')}}?food_id=${item}`,
+                processData:false,
+                contentType:false,
+                statusCode:{
+                    401:function (){
+                        swal("Error","You must be authenticate first!","error")
+                    }
+                }
+            }).done(function (data){
+                $(element).text(data)
+            })
+        })
+    </script>
 
 @endsection

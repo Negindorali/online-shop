@@ -12,7 +12,7 @@
                 <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
                     <div class="col-md-12 ftco-animate">
                         <div class="text w-100 mt-5 text-center">
-                            <span class="subheading"><h2>Taste.it Restaurant</h2></span>
+                            <span class="subheading"><h2>Venous Restaurant</h2></span>
                             <h1>Cooking Since</h1>
                             <span class="subheading-2">1958</span>
                         </div>
@@ -27,7 +27,7 @@
                 <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
                     <div class="col-md-12 ftco-animate">
                         <div class="text w-100 mt-5 text-center">
-                            <span class="subheading"><h2>Taste.it Restaurant</h2></span>
+                            <span class="subheading"><h2>Venous Restaurant</h2></span>
                             <h1>Best Quality</h1>
                             <span class="subheading-2 sub">Food</span>
                         </div>
@@ -40,66 +40,6 @@
 <section class="ftco-section ftco-wrap-about ftco-no-pb ftco-no-pt">
     <div class="container">
         <div class="row no-gutters">
-            <div class="col-sm-4 p-4 p-md-5 d-flex align-items-center justify-content-center bg-primary">
-                <form action="#" class="appointment-form">
-                    <h3 class="mb-3">Book your Table</h3>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <input type="name" class="form-control" placeholder="Name">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Phone">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <div class="input-wrap">
-                                    <div class="icon"><span class="fa fa-calendar"></span></div>
-                                    <input type="text" class="form-control book_date" placeholder="Check-In">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <div class="input-wrap">
-                                    <div class="icon"><span class="fa fa-clock-o"></span></div>
-                                    <input type="text" class="form-control book_time" placeholder="Time">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <div class="form-field">
-                                    <div class="select-wrap">
-                                        <div class="icon"><span class="fa fa-chevron-down"></span></div>
-                                        <select name="" id="" class="form-control">
-                                            <option value="">Guest</option>
-                                            <option value="">1</option>
-                                            <option value="">2</option>
-                                            <option value="">3</option>
-                                            <option value="">4</option>
-                                            <option value="">5</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <input type="submit" value="Book Your Table Now" class="btn btn-white py-3 px-4">
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
             <div class="col-sm-8 wrap-about py-5 ftco-animate img" style="background-image: url({{asset('templateassets/images/about.jpg')}});">
                 <div class="row pb-5 pb-md-0">
                     <div class="col-md-12 col-lg-7">
@@ -145,48 +85,24 @@
                     <div class="heading-menu text-center ftco-animate">
                         <h3>Breakfast</h3>
                     </div>
-                    <div class="menus d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url({{asset('templateassets/images/breakfast-1.jpg')}});"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
+                    @foreach($food->where(\App\Models\Food::CATEGORY_ID,1) as $foood)
+                        <div class="menus d-flex ftco-animate">
+                            <div class="menu-img img" style="background:url('{{asset("upload/".$foood->image)}}');background-size: cover"></div>
+                            <div class="text">
+                                <div class="d-flex">
+                                    <div class="one-half">
+                                        <h3>{{$foood->name}}</h3>
+                                    </div>
+                                    <div class="one-forth">
+                                        <span class="price">{{$foood->price}}</span>
+                                    </div>
                                 </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
+                                <p><span>{{$foood->nutrients}}</span></p>
                             </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomato</span></p>
+                            {{--                            <button class="btn like" data-like=""><i class="fa fa-thumbs-o-up"></i><span class="likecount"></span></button>--}}
+                            <button class="btn like" data-like ="{{$foood->id}}"><i class="fa fa-thumbs-o-up"></i><span class="ml-2 mr-3" class="likecount">{{count($foood->likeable)}}</span></button>
                         </div>
-                    </div>
-                    <div class="menus d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url({{asset('templateassets/images/breakfast-2.jpg')}});"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
-                                </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
-                            </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-                        </div>
-                    </div>
-                    <div class="menus border-bottom-0 d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url({{asset('templateassets/images/breakfast-3.jpg')}});"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
-                                </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
-                            </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-                        </div>
-                    </div>
+                    @endforeach
                     <span class="flat flaticon-bread" style="left: 0;"></span>
                     <span class="flat flaticon-breakfast" style="right: 0;"></span>
                 </div>
@@ -197,99 +113,52 @@
                     <div class="heading-menu text-center ftco-animate">
                         <h3>Lunch</h3>
                     </div>
-                    <div class="menus d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url({{asset('templateassets/images/lunch-1.jpg')}});"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
+                    @foreach($food->where(\App\Models\Food::CATEGORY_ID,2) as $foood)
+                        <div class="menus d-flex ftco-animate">
+                            <div class="menu-img img" style="background-image: url('{{asset("upload/".$foood->image)}}');background-size: cover"></div>
+                            <div class="text">
+                                <div class="d-flex">
+                                    <div class="one-half">
+                                        <h3>{{$foood->name}}</h3>
+                                    </div>
+                                    <div class="one-forth">
+                                        <span class="price">{{$foood->price}}</span>
+                                    </div>
                                 </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
+                                <p><span>{{$foood->nutrients}}</span></p>
                             </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
+                            <button class="btn like" data-like="{{$foood->id}}"><i class="fa fa-thumbs-o-up"></i><span class="likecount">{{count($foood->likeable)}}</span></button>
                         </div>
-                    </div>
-                    <div class="menus d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url({{asset('templateassets/images/lunch-2.jpg')}});"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
-                                </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
-                            </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-                        </div>
-                    </div>
-                    <div class="menus border-bottom-0 d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url({{asset('templateassets/images/lunch-3.jpg)')}};"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
-                                </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
-                            </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-                        </div>
-                    </div>
+                    @endforeach
                     <span class="flat flaticon-pizza" style="left: 0;"></span>
                     <span class="flat flaticon-chicken" style="right: 0;"></span>
                 </div>
             </div>
+
+
 
             <div class="col-md-6 col-lg-4">
                 <div class="menu-wrap">
                     <div class="heading-menu text-center ftco-animate">
                         <h3>Dinner</h3>
                     </div>
-                    <div class="menus d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url({{asset('templateassets/images/dinner-1.jpg')}});"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
+                    @foreach($food->where(\App\Models\Food::CATEGORY_ID,3) as $foood)
+                        <div class="menus d-flex ftco-animate">
+                            <div class="menu-img img" style="background-image: url({{asset('templateassets/images/dinner-1.jpg')}});"></div>
+                            <div class="text">
+                                <div class="d-flex">
+                                    <div class="one-half">
+                                        <h3>{{$foood->name}}</h3>
+                                    </div>
+                                    <div class="one-forth">
+                                        <span class="price">{{$foood->price}}</span>
+                                    </div>
                                 </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
+                                <p><span>{{$foood->nutrients}}</span></p>
                             </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
+                            <button class="btn like" data-like="{{$foood->id}}"><i class="fa fa-thumbs-o-up"></i><span class="likecount">{{count($foood->likeable)}}</span></button>
                         </div>
-                    </div>
-                    <div class="menus d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url({{asset('templateassets/images/dinner-2.jpg')}});"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
-                                </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
-                            </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-                        </div>
-                    </div>
-                    <div class="menus border-bottom-0 d-flex ftco-animate">
-                        <div class="menu-img img" style="background-image: url({{asset('templateassets/images/dinner-3.jpg')}});"></div>
-                        <div class="text">
-                            <div class="d-flex">
-                                <div class="one-half">
-                                    <h3>Beef Roast Source</h3>
-                                </div>
-                                <div class="one-forth">
-                                    <span class="price">$29</span>
-                                </div>
-                            </div>
-                            <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-                        </div>
+                    @endforeach
                     </div>
                     <span class="flat flaticon-omelette" style="left: 0;"></span>
                     <span class="flat flaticon-burger" style="right: 0;"></span>
@@ -659,57 +528,27 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 ftco-animate">
-                <div class="blog-entry">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('{{asset('templateassets/images/image_1.jpg')}}');">
-                    </a>
-                    <div class="text px-4 pt-3 pb-4">
-                        <div class="meta">
-                            <div><a href="#">August 3, 2020</a></div>
-                            <div><a href="#">Admin</a></div>
+            @foreach($blogs as $blog)
+                <div class="col-md-4 ftco-animate">
+                    <div class="blog-entry">
+                        <a href="{{route('singlepage',$blog->title)}}" class="block-20" style="background-image: url('{{$blog->image}}');">
+                            <img src="{{asset("upload/".$blog->image)}}" class="img img-fluid" alt="">
+                        </a>
+                        <div class="text px-4 pt-3 pb-4">
+                            <div class="meta">
+                                <div><a href="#">{{\Carbon\Carbon::make($blog->created_at)->toDateString()}}</a></div>
+                                <div><a href=""></a>{{$blog->user->name}}</div>
+                            </div>
+                            <h3 class="heading"><a href="">{{$blog->title}}</a></h3>
+                            <p class="clearfix">
+                                <a href="{{route('singlepage',$blog->title)}}" class="float-left read btn btn-primary">Read more</a>
+                                <a href="#" class="float-right meta-chat"><span class="fa fa-comment"></span>{{$blog->comments_count}}</a>
+                                <a href="#" class="float-right meta-chat"><span class="fa fa-heart-o"></span>{{$blog->likeable_count}}</a>
+                            </p>
                         </div>
-                        <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                        <p class="clearfix">
-                            <a href="#" class="float-left read btn btn-primary">Read more</a>
-                            <a href="#" class="float-right meta-chat"><span class="fa fa-comment"></span> 3</a>
-                        </p>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 ftco-animate">
-                <div class="blog-entry">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('{{asset('templateassets/images/image_2.jpg')}}');">
-                    </a>
-                    <div class="text px-4 pt-3 pb-4">
-                        <div class="meta">
-                            <div><a href="#">August 3, 2020</a></div>
-                            <div><a href="#">Admin</a></div>
-                        </div>
-                        <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                        <p class="clearfix">
-                            <a href="#" class="float-left read btn btn-primary">Read more</a>
-                            <a href="#" class="float-right meta-chat"><span class="fa fa-comment"></span> 3</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 ftco-animate">
-                <div class="blog-entry">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('{{asset('templateassets/images/image_3.jpg')}}');">
-                    </a>
-                    <div class="text px-4 pt-3 pb-4">
-                        <div class="meta">
-                            <div><a href="#">August 3, 2020</a></div>
-                            <div><a href="#">Admin</a></div>
-                        </div>
-                        <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                        <p class="clearfix">
-                            <a href="#" class="float-left read btn btn-primary">Read more</a>
-                            <a href="#" class="float-right meta-chat"><span class="fa fa-comment"></span> 3</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Panel\RoleController;
+use App\Models\Blog;
+use App\Models\Food;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\BlogController;
@@ -20,7 +23,9 @@ use App\Http\Controllers\TagController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $food= Food::with('category','likeable')->get();
+    $blogs = Blog::with("user")->withCount('comments','likeable')->get();
+    return view('welcome',compact("food","blogs"));
 });
 
 Auth::routes();
@@ -34,14 +39,17 @@ Route::group(["prefix"=>"dashboard","middleware"=>"auth"],function (){
     Route::resource("comment",CommentController::class);
     Route::resource("category", CategoryController::class);
     Route::resource("tag", TagController::class);
+    Route::get("blogapi",[ApiController::class,"blogLike"])->name("like.api");
+    Route::get("foodapi",[ApiController::class,"foodLike"])->name("food.api");
 });
 
 Route::get("blog/{blog:title}",[BlogController::class,'showSinglePage'])->name('singlepage');
 Route::get("blogslist",[BlogController::class,'showblogs'])->name('blogs');
 Route::get('food/menu',[FoodController::class,"ShowMenu"])->name('foodmenu');
 Route::get('test',function (){
-    $food = \App\Models\Blog::where('id',1)->withcount("likeable")->get();
-    return $food;
+
+//    $food = \App\Models\Blog::where('id',1)->withcount("likeable")->get();
+//    return $food;
 });
 
 

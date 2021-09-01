@@ -26,7 +26,7 @@ class FoodController extends Controller
     public function ShowMenu(Food $food)
     {
 //        $food = $food->load('category','category.food');
-        $food= Food::with('category')->get();
+        $food= Food::with('category','likeable')->get();
         return view('foods.menu',compact('food'));
     }
 

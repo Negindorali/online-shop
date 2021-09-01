@@ -87,13 +87,14 @@
 <script src="{{asset('templateassets/js/jquery.waypoints.min.js')}}"></script>
 <script src="{{asset('templateassets/js/jquery.stellar.min.js')}}"></script>
 <script src="{{asset('templateassets/js/owl.carousel.min.js')}}"></script>
-<script src="{{asset('temlateassets/js/jquery.magnific-popup.min.js')}}"></script>
+<script src="{{asset('templateassets/js/jquery.magnific-popup.min.js')}}"></script>
 <script src="{{asset('templateassets/js/jquery.animateNumber.min.js')}}"></script>
 <script src="{{asset('templateassets/js/bootstrap-datepicker.js')}}"></script>
 <script src="{{asset('templateassets/js/jquery.timepicker.min.js')}}"></script>
 <script src="{{asset('templateassets/js/scrollax.min.js')}}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="{{asset('templateassets/js/google-map.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="{{asset('templateassets/js/main.js')}}"></script>
 <script>
     $(document).ready(function (){
@@ -129,3 +130,5 @@
 <script>
     console.log({!! json_encode(\Illuminate\Support\Facades\DB::getQueryLog()) !!})
 </script>
+
+@yield("ex-js")
