@@ -24,9 +24,19 @@ use App\Http\Controllers\TagController;
 
 Route::get('/', function () {
     $food= Food::with('category','likeable')->get();
-    $blogs = Blog::with("user")->withCount('comments','likeable')->get();
+    $blogs = Blog::with("user")->withCount('comments','likeable')->orderBy("id","DESC")->take(3)->get();
     return view('welcome',compact("food","blogs"));
 });
+Route::get("/aboutvenous",function (){
+   return view("about");
+});
+Route::get("/chefs",function (){
+   return view("chefs");
+});
+Route::get("/contactus",function (){
+   return view("contact");
+});
+
 
 Auth::routes();
 

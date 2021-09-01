@@ -6,7 +6,7 @@
                 <p class="mb-0 phone"><span class="mailus">Phone no:</span> <a href="#">+98 991 617 5068</a> or <span class="mailus">email us:</span> <a href="#">vendraa.78@gmail.com</a></p>
             </div>
             <div class="col-12 col-md d-flex justify-content-md-end">
-                <p class="mb-0">Mon - Fri / 9:00-21:00, Sat - Sun / 10:00-20:00</p>
+                <p class="mb-0">{{\Carbon\Carbon::now()}}</p>
                 <div class="social-media">
                     <p class="mb-0 d-flex">
                         <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
@@ -29,7 +29,7 @@
             <ul class="navbar-nav ml-auto">
                 @if (Route::has('login'))
                     @auth
-                        <li class="nav-item "><a href="{{ url('/home') }}" class="nav-link">Home</a></li>
+                        <li class="nav-item "><a href="{{ url('/home') }}" class="nav-link">{{auth()->user()->name}}</a></li>
                     @else
                         <li class="nav-item"><a href="{{ url('/login') }}" class="nav-link">login</a></li>
                         @if (Route::has('register'))
@@ -37,11 +37,11 @@
                         @endif
                     @endauth
                 @endif
-                <li class="nav-item"><a href="menu.html" class="nav-link">chef</a></li>
+                <li class="nav-item"><a href="{{url('/chefs')}}" class="nav-link">chef</a></li>
                 <li class="nav-item"><a href="{{url('/food/menu')}}" class="nav-link">Menu</a></li>
                 <li class="nav-item"><a href="{{url('/blogslist')}}" class="nav-link">Blog</a></li>
-                <li class="nav-item"><a href="menu.html" class="nav-link">about</a></li>
-                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="{{url('/aboutvenous')}}" class="nav-link">about</a></li>
+                <li class="nav-item"><a href="{{url('/contactus')}}" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </div>
