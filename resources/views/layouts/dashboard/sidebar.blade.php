@@ -206,6 +206,9 @@
             <li>
                 <a href="{{url('/dashboard/tag')}}">TAG Manager</a>
             </li>
+            <li>
+                <a href="{{url('/dashboard/booking')}}">BOOKING Manager</a>
+            </li>
 {{--            <li>--}}
 {{--                <a href="dashboard-three.html">آمار وب سایت </a>--}}
 {{--            </li>--}}

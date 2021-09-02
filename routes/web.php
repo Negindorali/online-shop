@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Panel\RoleController;
 use App\Models\Blog;
@@ -49,6 +50,7 @@ Route::group(["prefix"=>"dashboard","middleware"=>"auth"],function (){
     Route::resource("comment",CommentController::class);
     Route::resource("category", CategoryController::class);
     Route::resource("tag", TagController::class);
+    Route::resource("booking", BookingController::class);
     Route::get("blogapi",[ApiController::class,"blogLike"])->name("like.api");
     Route::get("foodapi",[ApiController::class,"foodLike"])->name("food.api");
 });
