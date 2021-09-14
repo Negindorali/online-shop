@@ -65,3 +65,4 @@ Route::get('test',function (){
 });
 
 
+Route::get("/",[BookingController::class]);

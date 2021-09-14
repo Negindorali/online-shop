@@ -84,6 +84,7 @@ class BlogController extends Controller
             $blog ->tags()->sync([
                     [
                         "tag_id"=> $tag
+
                     ]
                 ],false
             );
