@@ -20,4 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  Route::get('/neginApi' , function (Request  $request){
      return \App\Models\Blog::all();
  });
- Route::apiResource('food' ,\App\Http\Controllers\Api::class);
+// Route::apiResource('food' ,\App\Http\Controllers\Api::class);

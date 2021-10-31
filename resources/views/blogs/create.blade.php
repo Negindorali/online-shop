@@ -19,7 +19,7 @@
                         <div class="row justify-content-center">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <input type="name" name="title" class="form-control" placeholder="Title">
+                                    <input type="name"  class="form-control" placeholder="Title">
                                 </div>
                             </div>
                             <div class="col-md-4">

@@ -58,11 +58,3 @@ Route::group(["prefix"=>"dashboard","middleware"=>"auth"],function (){
 Route::get("blog/{blog:title}",[BlogController::class,'showSinglePage'])->name('singlepage');
 Route::get("blogslist",[BlogController::class,'showblogs'])->name('blogs');
 Route::get('food/menu',[FoodController::class,"ShowMenu"])->name('foodmenu');
-Route::get('test',function (){
-
-//    $food = \App\Models\Blog::where('id',1)->withcount("likeable")->get();
-//    return $food;
-});
-
-
-Route::get("/",[BookingController::class]);

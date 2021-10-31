@@ -24,7 +24,6 @@ class RoleSeeder extends Seeder
                 'name'=>"user",
                 'scope'=>"[]"
             ],
-
         ]);
     }
 }

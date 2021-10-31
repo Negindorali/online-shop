@@ -77,14 +77,12 @@ class BlogController extends Controller
             ]);
 
         $valid = array_merge($valid,[Blog::USER_ID => Auth::id()]);
-
         $blog = Blog::create($valid);
         $request->input("tag");
         foreach ($request->input("tag" ) as $tag ){
             $blog ->tags()->sync([
                     [
                         "tag_id"=> $tag
-
                     ]
                 ],false
             );
@@ -137,7 +135,6 @@ class BlogController extends Controller
             $valid =array_merge($valid,[
                 Blog::IMAGE=>(new UploadFile($request->file(Blog::IMAGE)))->fileName,
             ]);
-
         $blog ->update($valid);
 
 

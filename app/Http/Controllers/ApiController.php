@@ -23,4 +23,5 @@ class ApiController extends Controller
       $food->likeable()->create(['user_id'=>Auth::id()]);
       return count($food->likeable);
     }
+
 }
